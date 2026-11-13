@@ -1,10 +1,4 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn,UpdateDateColumn,} from 'typeorm';
 import { Role } from '../../common/enums/role.enum.js';
 import { UserStatus } from '../../common/enums/user-status.enum.js';
 
@@ -23,12 +17,7 @@ export class Users {
   @Column({ type: 'varchar', length: 20, unique: true })
   phone!: string;
 
-  @Column({
-    name: 'password_hash',
-    type: 'varchar',
-    length: 255,
-    select: false,
-  })
+  @Column({ name: 'password_hash', type: 'varchar', length: 255, select: false,})
   password!: string;
 
   @Column({ type: 'enum', enum: Role })
