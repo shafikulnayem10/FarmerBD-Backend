@@ -1,6 +1,8 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module.js';
+import { LoggerMiddleware } from './common/middleware/logger.middleware.js';
+import { RequestIdMiddleware } from './common/middleware/request-id.middleware.js';
 import { envValidationSchema } from './config/env.validation.js';
 import { DatabaseModule } from './database/database.module.js';
 import { UsersModule } from './users/users.module.js';
@@ -17,4 +19,8 @@ import { UsersModule } from './users/users.module.js';
     AuthModule,
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(RequestIdMiddleware, LoggerMiddleware).forRoutes('*path');
+  }
+}
