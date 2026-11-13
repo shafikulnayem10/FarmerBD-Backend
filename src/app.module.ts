@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { AuthModule } from './auth/auth.module.js';
+import { CategoriesModule } from './categories/categories.module.js';
 import { LoggerMiddleware } from './common/middleware/logger.middleware.js';
 import { RequestIdMiddleware } from './common/middleware/request-id.middleware.js';
 import { envValidationSchema } from './config/env.validation.js';
@@ -22,6 +23,7 @@ import { UsersModule } from './users/users.module.js';
     UsersModule,
     AuthModule,
     FarmersModule,
+    CategoriesModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
