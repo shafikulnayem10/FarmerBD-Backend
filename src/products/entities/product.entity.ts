@@ -1,10 +1,11 @@
-import {Check,Column,CreateDateColumn,DeleteDateColumn,Entity,Index,JoinColumn,ManyToOne,PrimaryGeneratedColumn,UpdateDateColumn,} from 'typeorm';
+import {Check,Column,CreateDateColumn,DeleteDateColumn,Entity,Index,JoinColumn,ManyToOne,OneToMany,PrimaryGeneratedColumn,UpdateDateColumn,} from 'typeorm';
 import type { Relation } from 'typeorm';
 import { Category } from '../../categories/entities/category.entity.js';
 import { ProductStatus } from '../../common/enums/product-status.enum.js';
 import { ProductUnit } from '../../common/enums/product-unit.enum.js';
 import { numericTransformer } from '../../common/transformers/numeric.transformer.js';
 import { FarmerProfile } from '../../farmers/entities/farmer-profile.entity.js';
+import { ProductImage } from './product-image.entity.js';
 
 @Entity('products')
 @Check('"price_per_unit" > 0')
@@ -29,6 +30,9 @@ export class Product {
   @ManyToOne(() => Category, { onDelete: 'RESTRICT' })
   @JoinColumn({ name: 'category_id' })
   category!: Relation<Category>;
+
+  @OneToMany(() => ProductImage, (image) => image.product)
+  images!: Relation<ProductImage[]>;
 
   @Column({ type: 'varchar', length: 150 })
   name!: string;
