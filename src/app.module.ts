@@ -3,16 +3,17 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { AuthModule } from './auth/auth.module.js';
+import { BuyersModule } from './buyers/buyers.module.js';
 import { CategoriesModule } from './categories/categories.module.js';
 import { LoggerMiddleware } from './common/middleware/logger.middleware.js';
 import { RequestIdMiddleware } from './common/middleware/request-id.middleware.js';
 import { envValidationSchema } from './config/env.validation.js';
 import { DatabaseModule } from './database/database.module.js';
+import { FarmerOrdersModule } from './farmer-orders/farmer-orders.module.js';
 import { FarmersModule } from './farmers/farmers.module.js';
+import { OrdersModule } from './orders/orders.module.js';
 import { ProductsModule } from './products/products.module.js';
- import { UsersModule } from './users/users.module.js';
-  import { BuyersModule } from './buyers/buyers.module.js';
-  import { OrdersModule } from './orders/orders.module.js';
+import { UsersModule } from './users/users.module.js';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ProductsModule } from './products/products.module.js';
     ProductsModule,
     BuyersModule,
     OrdersModule,
+    FarmerOrdersModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
