@@ -1,6 +1,6 @@
-import { BadRequestException, Injectable,NotFoundException,} from '@nestjs/common';
+import {BadRequestException,ConflictException,Injectable,NotFoundException,} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindOptionsWhere, ILike, Repository } from 'typeorm';
+import { EntityManager, FindOptionsWhere, ILike, Repository } from 'typeorm';
 import { CategoriesService } from '../categories/categories.service.js';
 import { ProductStatus } from '../common/enums/product-status.enum.js';
 import { FarmersService } from '../farmers/farmers.service.js';
@@ -10,6 +10,7 @@ import { UpdateProductDto } from './dtos/update-product.dto.js';
 import { UpdateStatusDto } from './dtos/update-status.dto.js';
 import { UpdateStockDto } from './dtos/update-stock.dto.js';
 import { Product } from './entities/product.entity.js';
+import type { StockItem } from './interfaces/stock-item.interface.js';
 
 const EDITABLE_FIELDS = [
   'name',
@@ -141,6 +142,83 @@ export class ProductsService {
     const product = await this.findOwnProduct(userId, productId);
     await this.productRepo.softRemove(product);
     return { message: 'Product deleted successfully' };
+  }
+
+  async reserveStock(manager: EntityManager, items: StockItem[]) {
+    const sortedItems = this.sortItems(items);
+    const lockedById: Record<string, Product> = {};
+
+    for (const item of sortedItems) {
+      const product = await manager.findOne(Product, {
+        where: { id: item.productId },
+        lock: { mode: 'pessimistic_write' },
+      });
+
+      if (!product) {
+        throw new ConflictException('Product not found or no longer available');
+      }
+      if (product.status !== ProductStatus.ACTIVE) {
+        throw new ConflictException(`Product "${product.name}" is not available`);
+      }
+      if (item.quantity < product.minOrderQuantity) {
+        throw new ConflictException(
+          `Minimum order for "${product.name}" is ${product.minOrderQuantity}`,
+        );
+      }
+      if (item.quantity > product.availableQuantity) {
+        throw new ConflictException(
+          `Not enough stock for "${product.name}". Available: ${product.availableQuantity}`,
+        );
+      }
+
+      product.availableQuantity = this.roundQuantity(
+        product.availableQuantity - item.quantity,
+      );
+      if (product.availableQuantity === 0) {
+        product.status = ProductStatus.OUT_OF_STOCK;
+      }
+
+      lockedById[product.id] = await manager.save(product);
+    }
+
+    const result: Product[] = [];
+    for (const item of items) {
+      result.push(lockedById[item.productId]);
+    }
+    return result;
+  }
+
+  async restoreStock(manager: EntityManager, items: StockItem[]) {
+    const sortedItems = this.sortItems(items);
+
+    for (const item of sortedItems) {
+      const product = await manager.findOne(Product, {
+        where: { id: item.productId },
+        withDeleted: true,
+        lock: { mode: 'pessimistic_write' },
+      });
+
+      if (!product) {
+        continue;
+      }
+
+      product.availableQuantity = this.roundQuantity(
+        product.availableQuantity + item.quantity,
+      );
+      if (product.status === ProductStatus.OUT_OF_STOCK) {
+        product.status = ProductStatus.ACTIVE;
+      }
+
+      await manager.save(product);
+    }
+  }
+
+  private sortItems(items: StockItem[]) {
+    return [...items].sort((a, b) => a.productId.localeCompare(b.productId));
+  }
+
+  private roundQuantity(value: number) {
+    return Number(value.toFixed(3));
   }
 
   private async findOwnProduct(userId: string, productId: string) {
