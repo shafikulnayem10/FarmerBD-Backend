@@ -55,4 +55,11 @@ export class UsersService {
   async updatePassword(id: string, hashedPassword: string): Promise<void> {
     await this.userRepo.update(id, { password: hashedPassword });
   }
+    async updatePhone(id: string, phone: string): Promise<void> {
+    const existing = await this.userRepo.findOne({ where: { phone } });
+    if (existing && existing.id !== id) {
+      throw new ConflictException('Phone number is already registered');
+    }
+    await this.userRepo.update(id, { phone });
+  }
 }
