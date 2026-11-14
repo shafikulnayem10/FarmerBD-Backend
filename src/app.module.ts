@@ -10,7 +10,8 @@ import { envValidationSchema } from './config/env.validation.js';
 import { DatabaseModule } from './database/database.module.js';
 import { FarmersModule } from './farmers/farmers.module.js';
 import { ProductsModule } from './products/products.module.js';
-import { UsersModule } from './users/users.module.js';
+ import { UsersModule } from './users/users.module.js';
+  import { BuyersModule } from './buyers/buyers.module.js';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { UsersModule } from './users/users.module.js';
     FarmersModule,
     CategoriesModule,
     ProductsModule,
+    BuyersModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
