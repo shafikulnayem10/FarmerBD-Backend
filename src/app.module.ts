@@ -9,6 +9,7 @@ import { RequestIdMiddleware } from './common/middleware/request-id.middleware.j
 import { envValidationSchema } from './config/env.validation.js';
 import { DatabaseModule } from './database/database.module.js';
 import { FarmersModule } from './farmers/farmers.module.js';
+import { ProductsModule } from './products/products.module.js';
 import { UsersModule } from './users/users.module.js';
 
 @Module({
@@ -24,6 +25,7 @@ import { UsersModule } from './users/users.module.js';
     AuthModule,
     FarmersModule,
     CategoriesModule,
+    ProductsModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
