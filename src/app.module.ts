@@ -12,6 +12,7 @@ import { FarmersModule } from './farmers/farmers.module.js';
 import { ProductsModule } from './products/products.module.js';
  import { UsersModule } from './users/users.module.js';
   import { BuyersModule } from './buyers/buyers.module.js';
+  import { OrdersModule } from './orders/orders.module.js';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { ProductsModule } from './products/products.module.js';
     CategoriesModule,
     ProductsModule,
     BuyersModule,
+    OrdersModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })

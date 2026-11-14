@@ -1,8 +1,4 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import {BadRequestException,Injectable,NotFoundException,} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Not, Repository } from 'typeorm';
 import { isDistrictInDivision } from '../common/constants/bd-locations.js';
