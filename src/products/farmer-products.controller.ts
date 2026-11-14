@@ -1,4 +1,4 @@
-import { Controller, Get, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, ParseUUIDPipe, Query, UseGuards } from '@nestjs/common';
 import { JwtGuard } from '../auth/jwtGuard.guard.js';
 import { Roles } from '../auth/roles/roles/roles.decorator.js';
 import { RolesGuard } from '../auth/roles/roles/roles.guard.js';
@@ -19,5 +19,13 @@ export class FarmerProductsController {
     @Query() query: MyProductsQueryDto,
   ) {
     return await this.productsService.getMyProducts(userId, query);
+  }
+
+  @Get(':id')
+  async getMyProduct(
+    @CurrentUser('id') userId: string,
+    @Param('id', ParseUUIDPipe) id: string,
+  ) {
+    return await this.productsService.getMyProduct(userId, id);
   }
 }

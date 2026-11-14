@@ -1,4 +1,4 @@
-import {BadRequestException,ConflictException,Injectable,NotFoundException,} from '@nestjs/common';
+import {BadRequestException,ConflictException, Injectable, NotFoundException,} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EntityManager, FindOptionsWhere, ILike, Repository } from 'typeorm';
 import { CategoriesService } from '../categories/categories.service.js';
@@ -79,6 +79,11 @@ export class ProductsService {
         totalPages: Math.ceil(total / query.limit),
       },
     };
+  }
+
+  async getMyProduct(userId: string, productId: string) {
+    const product = await this.findOwnProduct(userId, productId);
+    return this.toProductResponse(product);
   }
 
   async updateProduct(userId: string, productId: string, dto: UpdateProductDto) {
