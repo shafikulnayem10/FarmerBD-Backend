@@ -49,7 +49,7 @@ export class ProductsService {
       availableFrom: dto.availableFrom ?? null,
     });
     const saved = await this.productRepo.save(product);
-    return this.toProductResponse(saved);
+  return this.toProductResponse(saved);
   }
 
   async getMyProducts(userId: string, query: MyProductsQueryDto) {
