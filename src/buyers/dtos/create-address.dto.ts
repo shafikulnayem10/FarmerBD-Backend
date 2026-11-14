@@ -1,12 +1,5 @@
 import { Transform } from 'class-transformer';
-import {IsBoolean,
-  IsIn,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-  Matches,
-  MaxLength,
-} from 'class-validator';
+import {IsBoolean,IsIn,IsNotEmpty,IsOptional,IsString,Matches, MaxLength,} from 'class-validator';
 import {
   BD_DISTRICTS,
   BD_DIVISIONS,
