@@ -107,7 +107,13 @@ export class AddressesService {
     }
     return address;
   }
-
+  
+    async getDefaultAddress(userId: string) {
+    const profile = await this.buyersService.getOrCreateProfile(userId);
+    return await this.addressRepo.findOne({
+      where: { buyerId: profile.id, isDefault: true },
+    });
+  }
   private async clearOtherDefaults(buyerId: string, keepId: string) {
     await this.addressRepo.update(
       { buyerId, id: Not(keepId) },
