@@ -49,7 +49,7 @@ export class CatalogService {
 
     const [products, total] = await this.productRepo.findAndCount({
       where,
-      relations: { farmer: true, category: true, images: true },
+      relations: { farmer: true, category: true, },
       order,
       skip: (query.page - 1) * query.limit,
       take: query.limit,
@@ -69,7 +69,7 @@ export class CatalogService {
   async findOne(id: string) {
     const product = await this.productRepo.findOne({
       where: { id, status: In(VISIBLE_STATUSES) },
-      relations: { farmer: true, category: true, images: true },
+      relations: { farmer: true, category: true,},
     });
     if (!product) {
       throw new NotFoundException('Product not found');
@@ -99,9 +99,7 @@ export class CatalogService {
   }
 
   private toPublicResponse(product: Product) {
-    const images = [...product.images]
-      .sort((a, b) => a.sortOrder - b.sortOrder)
-      .map((image) => ({ id: image.id, url: image.url }));
+    
 
     return {
       id: product.id,
@@ -126,7 +124,7 @@ export class CatalogService {
         upazila: product.farmer.upazila,
         verificationStatus: product.farmer.verificationStatus,
       },
-      images,
+    
     };
   }
 }

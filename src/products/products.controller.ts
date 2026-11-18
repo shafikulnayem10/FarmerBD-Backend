@@ -42,13 +42,13 @@ export class ProductsController {
     return await this.productsService.updateStock(userId, id, dto);
   }
 
-  @Patch(':id/status')
+  @Patch(':productID/status')
   async updateStatus(
     @CurrentUser('id') userId: string,
-    @Param('id', ParseUUIDPipe) id: string,
+    @Param('productID', ParseUUIDPipe) productID: string,
     @Body() dto: UpdateStatusDto,
   ) {
-    return await this.productsService.updateStatus(userId, id, dto);
+    return await this.productsService.updateStatus(userId, productID, dto);
   }
 
   @Delete(':id')

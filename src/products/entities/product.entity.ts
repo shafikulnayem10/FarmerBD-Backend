@@ -5,7 +5,7 @@ import { ProductStatus } from '../../common/enums/product-status.enum.js';
 import { ProductUnit } from '../../common/enums/product-unit.enum.js';
 import { numericTransformer } from '../../common/transformers/numeric.transformer.js';
 import { FarmerProfile } from '../../farmers/entities/farmer-profile.entity.js';
-import { ProductImage } from './product-image.entity.js';
+
 
 @Entity('products')
 @Check('"price_per_unit" > 0')
@@ -31,8 +31,7 @@ export class Product {
   @JoinColumn({ name: 'category_id' })
   category!: Relation<Category>;
 
-  @OneToMany(() => ProductImage, (image) => image.product)
-  images!: Relation<ProductImage[]>;
+  
 
   @Column({ type: 'varchar', length: 150 })
   name!: string;

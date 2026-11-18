@@ -130,7 +130,7 @@ export class ProductsService {
       const profile = await this.farmersService.getOrCreateProfile(userId);
       if (!this.farmersService.isProfileComplete(profile)) {
         throw new BadRequestException(
-          'Complete your farm profile (farm name and district) before publishing a product',
+          'Complete your farm profile including farm name and district before publishing a product',
         );
       }
       if (product.availableQuantity <= 0) {

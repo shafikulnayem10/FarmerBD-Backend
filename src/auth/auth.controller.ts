@@ -2,7 +2,6 @@ import {Body,Controller,Get,HttpCode,HttpStatus,Patch,Post,UseGuards,} from '@ne
 import { Throttle } from '@nestjs/throttler';
 import { CurrentUser } from '../common/decorators/current-user.decorator.js';
 import { AuthService } from './auth.service.js';
-import { ChangePasswordDto } from './dtos/change-password.dto.js';
 import { LoginDto } from './dtos/login.dto.js';
 import { RegisterDto } from './dtos/register.dto.js';
 import { JwtGuard } from './jwtGuard.guard.js';
@@ -30,12 +29,5 @@ export class AuthController {
     return await this.authService.getProfile(userId);
   }
 
-  @Patch('change-password')
-  @UseGuards(JwtGuard)
-  async changePassword(
-    @CurrentUser('id') userId: string,
-    @Body() dto: ChangePasswordDto,
-  ) {
-    return await this.authService.changePassword(userId, dto);
-  }
+ 
 }
