@@ -22,12 +22,12 @@ export class UpdateAddressDto {
   @MaxLength(100)
   recipientName?: string;
 
-  @IsOptional()
-  @Transform(({ value }: { value: unknown }) =>
-    typeof value === 'string' ? value.trim().replace(/^\+88/, '') : value,
-  )
-  
-  phone?: string;
+   @Transform(({ value }: { value: unknown }) =>
+   typeof value === 'string' ? value.trim() : value,
+   )
+   @IsString()
+   @IsNotEmpty()
+   phone!: string;
 
   @IsOptional()
   @IsIn(BD_DIVISIONS, { message: 'division must be a valid Bangladesh division' })

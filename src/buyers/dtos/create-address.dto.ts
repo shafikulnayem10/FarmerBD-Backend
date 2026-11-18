@@ -1,5 +1,5 @@
 import { Transform } from 'class-transformer';
-import {IsBoolean,IsIn,IsNotEmpty,IsOptional,IsString,Matches, MaxLength,} from 'class-validator';
+import {IsBoolean,IsIn,IsNotEmpty,IsOptional,IsString, MaxLength,} from 'class-validator';
 import {
   BD_DISTRICTS,
   BD_DIVISIONS,
@@ -20,11 +20,12 @@ export class CreateAddressDto {
   @MaxLength(100)
   recipientName!: string;
 
-  @Transform(({ value }: { value: unknown }) =>
-    typeof value === 'string' ? value.trim().replace(/^\+88/, '') : value,
-  )
-  
-  phone!: string;
+   @Transform(({ value }: { value: unknown }) =>
+   typeof value === 'string' ? value.trim() : value,
+   )
+   @IsString()
+   @IsNotEmpty()
+   phone!: string;
 
   @IsIn(BD_DIVISIONS, { message: 'division must be a valid Bangladesh division' })
   division!: string;

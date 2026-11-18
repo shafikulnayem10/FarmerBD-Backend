@@ -1,7 +1,6 @@
 import { Transform } from 'class-transformer';
 import { ArrayMinSize, ArrayUnique, IsArray, IsEmail, IsEnum, IsIn, IsNotEmpty, IsNumber, IsString, Matches, Max, MaxLength, Min,} from 'class-validator';
 import { BD_DISTRICTS } from '../../common/constants/bd-locations.js';
-import { PASSWORD_MESSAGE, PASSWORD_REGEX, PHONE_MESSAGE, PHONE_REGEX,} from '../../common/constants/validation.constants.js';
 import { VehicleType } from '../../common/enums/vehicle-type.enum.js';
 import { trim } from '../../common/transformers/trim.transformer.js';
 
@@ -24,10 +23,8 @@ export class CreateTransporterDto {
   @Transform(({ value }: { value: unknown }) =>
     typeof value === 'string' ? value.trim().replace(/^\+88/, '') : value,
   )
-  @Matches(PHONE_REGEX, { message: PHONE_MESSAGE })
   phone!: string;
 
-  @Matches(PASSWORD_REGEX, { message: PASSWORD_MESSAGE })
   password!: string;
 
   @IsEnum(VehicleType)
