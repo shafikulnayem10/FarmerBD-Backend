@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import { PASSWORD_REGEX, PHONE_REGEX } from '../common/constants/validation.constants.js';
 
 export const envValidationSchema = Joi.object({
   NODE_ENV: Joi.string()
@@ -15,4 +16,11 @@ export const envValidationSchema = Joi.object({
 
   JWT_SECRET: Joi.string().min(32).required(),
   JWT_EXPIRES_IN: Joi.number().integer().positive().default(3600),
+
+  // Used once to create the first Admin (FR-A01). Optional, so an existing
+  // database that already has an Admin doesn't need them.
+  ADMIN_NAME: Joi.string().max(100).allow('').optional(),
+  ADMIN_EMAIL: Joi.string().email().allow('').optional(),
+  ADMIN_PHONE: Joi.string().pattern(PHONE_REGEX).allow('').optional(),
+  ADMIN_PASSWORD: Joi.string().pattern(PASSWORD_REGEX).allow('').optional(),
 });

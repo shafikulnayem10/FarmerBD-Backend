@@ -62,6 +62,7 @@ export class BuyerOrdersService {
       const products = await this.productsService.reserveStock(
         manager,
         stockItems,
+        userId,
       );
 
       const farmerIds = [...new Set(products.map((p) => p.farmerId))];
@@ -226,7 +227,7 @@ export class BuyerOrdersService {
         productId: item.productId,
         quantity: item.quantity,
       }));
-      await this.productsService.restoreStock(manager, stockItems);
+      await this.productsService.restoreStock(manager, stockItems, userId);
 
       order.status = OrderStatus.CANCELLED;
       order.cancellationReason = dto.reason;
