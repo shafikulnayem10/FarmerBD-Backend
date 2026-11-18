@@ -87,25 +87,7 @@ export class FarmersService {
     return this.toProfileResponse(saved);
   }
 
-  async getPublicProfile(profileId: string) {
-    const profile = await this.profileRepo.findOne({ where: { id: profileId } });
-    if (!profile) {
-      throw new NotFoundException('Farmer not found');
-    }
 
-    return {
-      id: profile.id,
-      farmName: profile.farmName,
-      division: profile.division,
-      district: profile.district,
-      upazila: profile.upazila,
-      farmSizeAcres: profile.farmSizeAcres,
-      primaryCrops: profile.primaryCrops,
-      bio: profile.bio,
-      verificationStatus: profile.verificationStatus,
-      memberSince: profile.createdAt,
-    };
-  }
 
   async setVerificationStatus(profileId: string, status: VerificationStatus) {
     const profile = await this.profileRepo.findOne({ where: { id: profileId } });

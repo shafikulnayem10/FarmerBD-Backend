@@ -28,8 +28,5 @@ export class FarmersController {
     return await this.farmersService.updateMyProfile(userId, dto);
   }
 
-  @Get(':id/public')
-  async getPublicProfile(@Param('id', ParseUUIDPipe) id: string) {
-    return await this.farmersService.getPublicProfile(id);
-  }
+ 
 }
