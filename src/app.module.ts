@@ -16,6 +16,11 @@ import { ProductsModule } from './products/products.module.js';
 import { UsersModule } from './users/users.module.js';
  import { CartModule } from './cart/cart.module.js';
  import { BuyerOrdersModule } from './buyer-orders/buyer-orders.module.js';
+import { AdminModule } from './admin/admin.module.js';
+import { DeliveriesModule } from './deliveries/deliveries.module.js';
+import { NotificationsModule } from './notifications/notifications.module.js';
+import { PricingModule } from './pricing/pricing.module.js';
+import { TransportersModule } from './transporters/transporters.module.js';
 
 @Module({
   imports: [
@@ -36,6 +41,11 @@ import { UsersModule } from './users/users.module.js';
     FarmerOrdersModule,
     CartModule,
     BuyerOrdersModule,
+    NotificationsModule,
+    PricingModule,
+    TransportersModule,
+    DeliveriesModule,
+    AdminModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })

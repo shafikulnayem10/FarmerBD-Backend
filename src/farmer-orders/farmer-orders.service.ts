@@ -113,7 +113,7 @@ export class FarmerOrdersService {
       for (const item of orderItems) {
         stockItems.push({ productId: item.productId, quantity: item.quantity });
       }
-      await this.productsService.restoreStock(manager, stockItems);
+      await this.productsService.restoreStock(manager, stockItems, userId);
 
       order.status = OrderStatus.REJECTED;
       order.rejectionReason = dto.reason;

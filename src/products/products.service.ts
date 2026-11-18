@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { EntityManager, FindOptionsWhere, ILike, Repository } from 'typeorm';
 import { CategoriesService } from '../categories/categories.service.js';
 import { ProductStatus } from '../common/enums/product-status.enum.js';
+import { StockChangeReason } from '../common/enums/stock-change-reason.enum.js';
 import { FarmersService } from '../farmers/farmers.service.js';
 import { CreateProductDto } from './dtos/create-product.dto.js';
 import { MyProductsQueryDto } from './dtos/my-products-query.dto.js';
@@ -10,6 +11,7 @@ import { UpdateProductDto } from './dtos/update-product.dto.js';
 import { UpdateStatusDto } from './dtos/update-status.dto.js';
 import { UpdateStockDto } from './dtos/update-stock.dto.js';
 import { Product } from './entities/product.entity.js';
+import { StockAdjustment } from './entities/stock-adjustment.entity.js';
 import type { StockItem } from './interfaces/stock-item.interface.js';
 
 const EDITABLE_FIELDS = [
@@ -106,21 +108,39 @@ export class ProductsService {
   }
 
   async updateStock(userId: string, productId: string, dto: UpdateStockDto) {
-    const product = await this.findOwnProduct(userId, productId);
+    const profile = await this.farmersService.getOrCreateProfile(userId);
 
-    product.availableQuantity = dto.availableQuantity;
+    return await this.productRepo.manager.transaction(async (manager) => {
+      const product = await manager.findOne(Product, {
+        where: { id: productId, farmerId: profile.id },
+        lock: { mode: 'pessimistic_write' },
+      });
+      if (!product) {
+        throw new NotFoundException('Product not found');
+      }
 
-    if (product.status === ProductStatus.ACTIVE && product.availableQuantity === 0) {
-      product.status = ProductStatus.OUT_OF_STOCK;
-    } else if (
-      product.status === ProductStatus.OUT_OF_STOCK &&
-      product.availableQuantity > 0
-    ) {
-      product.status = ProductStatus.ACTIVE;
-    }
+      const oldQuantity = product.availableQuantity;
+      product.availableQuantity = dto.availableQuantity;
 
-    const saved = await this.productRepo.save(product);
-    return this.toProductResponse(saved);
+      if (product.status === ProductStatus.ACTIVE && product.availableQuantity === 0) {
+        product.status = ProductStatus.OUT_OF_STOCK;
+      } else if (
+        product.status === ProductStatus.OUT_OF_STOCK &&
+        product.availableQuantity > 0
+      ) {
+        product.status = ProductStatus.ACTIVE;
+      }
+
+      const saved = await manager.save(product);
+      await this.logStockChange(
+        manager,
+        saved,
+        oldQuantity,
+        userId,
+        StockChangeReason.MANUAL_UPDATE,
+      );
+      return this.toProductResponse(saved);
+    });
   }
 
   async updateStatus(userId: string, productId: string, dto: UpdateStatusDto) {
@@ -149,7 +169,7 @@ export class ProductsService {
     return { message: 'Product deleted successfully' };
   }
 
-  async reserveStock(manager: EntityManager, items: StockItem[]) {
+  async reserveStock(manager: EntityManager, items: StockItem[], changedBy: string) {
     const sortedItems = this.sortItems(items);
     const lockedById: Record<string, Product> = {};
 
@@ -176,6 +196,7 @@ export class ProductsService {
         );
       }
 
+      const oldQuantity = product.availableQuantity;
       product.availableQuantity = this.roundQuantity(
         product.availableQuantity - item.quantity,
       );
@@ -184,6 +205,13 @@ export class ProductsService {
       }
 
       lockedById[product.id] = await manager.save(product);
+      await this.logStockChange(
+        manager,
+        product,
+        oldQuantity,
+        changedBy,
+        StockChangeReason.ORDER_RESERVED,
+      );
     }
 
     const result: Product[] = [];
@@ -193,7 +221,7 @@ export class ProductsService {
     return result;
   }
 
-  async restoreStock(manager: EntityManager, items: StockItem[]) {
+  async restoreStock(manager: EntityManager, items: StockItem[], changedBy: string) {
     const sortedItems = this.sortItems(items);
 
     for (const item of sortedItems) {
@@ -207,6 +235,7 @@ export class ProductsService {
         continue;
       }
 
+      const oldQuantity = product.availableQuantity;
       product.availableQuantity = this.roundQuantity(
         product.availableQuantity + item.quantity,
       );
@@ -215,7 +244,31 @@ export class ProductsService {
       }
 
       await manager.save(product);
+      await this.logStockChange(
+        manager,
+        product,
+        oldQuantity,
+        changedBy,
+        StockChangeReason.ORDER_RESTORED,
+      );
     }
+  }
+
+  private async logStockChange(
+    manager: EntityManager,
+    product: Product,
+    oldQuantity: number,
+    changedBy: string,
+    reason: StockChangeReason,
+  ) {
+    const log = manager.create(StockAdjustment, {
+      productId: product.id,
+      changedBy,
+      oldQuantity,
+      newQuantity: product.availableQuantity,
+      reason,
+    });
+    await manager.save(log);
   }
 
   private sortItems(items: StockItem[]) {
