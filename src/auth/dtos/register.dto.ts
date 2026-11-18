@@ -18,6 +18,7 @@ export class RegisterDto {
   @Transform(({ value }: { value: unknown }) =>
   typeof value === 'string' ? value.trim() : value,
   )
+  @IsString()
   phone!: string;
 
   @IsNotEmpty()

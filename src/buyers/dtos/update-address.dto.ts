@@ -25,8 +25,10 @@ export class UpdateAddressDto {
    @Transform(({ value }: { value: unknown }) =>
    typeof value === 'string' ? value.trim() : value,
    )
+   @IsOptional()
    @IsString()
    @IsNotEmpty()
+   
    phone!: string;
 
   @IsOptional()
