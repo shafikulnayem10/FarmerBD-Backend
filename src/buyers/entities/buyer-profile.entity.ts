@@ -1,12 +1,4 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  JoinColumn,
-  OneToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import {Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn,} from 'typeorm';
 import type { Relation } from 'typeorm';
 import { BuyerType } from '../../common/enums/buyer-type.enum.js';
 import { Users } from '../../users/entities/users.entity.js';
