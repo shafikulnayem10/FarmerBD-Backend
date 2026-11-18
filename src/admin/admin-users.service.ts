@@ -29,7 +29,6 @@ export class AdminUsersService {
     private readonly adminLogsService: AdminLogsService,
   ) {}
 
-  // FR-A14
   async getDashboard() {
     const roleRows = await this.userRepo
       .createQueryBuilder('user')
@@ -61,8 +60,7 @@ export class AdminUsersService {
       ordersByStatus[row.status] = Number(row.count);
     }
 
-    // Total sales counts COMPLETED orders only, the same rule as the
-    // farmer earnings summary (FR-F16).
+  
     const totalSales = await this.orderRepo.sum('totalAmount', {
       status: OrderStatus.COMPLETED,
     });
@@ -85,7 +83,6 @@ export class AdminUsersService {
     };
   }
 
-  // FR-A02
   async getUsers(query: AdminUsersQueryDto) {
     const base: FindOptionsWhere<Users> = {};
     if (query.role) {
@@ -123,8 +120,6 @@ export class AdminUsersService {
     };
   }
 
-  // FR-A03. A suspended user is already blocked by AuthService.login and
-  // JwtStrategy.validate, so only the status needs to change here.
   async updateUserStatus(adminId: string, userId: string, dto: UpdateUserStatusDto) {
     return await this.dataSource.transaction(async (manager) => {
       const user = await manager.findOne(Users, {

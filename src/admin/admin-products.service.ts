@@ -19,7 +19,6 @@ export class AdminProductsService {
     private readonly adminLogsService: AdminLogsService,
   ) {}
 
-  // FR-A12: unpublish (DRAFT) or archive any farmer's product
   async moderate(adminId: string, productId: string, dto: ModerateProductDto) {
     return await this.dataSource.transaction(async (manager) => {
       const product = await manager.findOne(Product, {
@@ -53,7 +52,6 @@ export class AdminProductsService {
     });
   }
 
-  // FR-A13. withDeleted lets the Admin see the history of a deleted product.
   async getStockLogs(productId: string, query: PaginationQueryDto) {
     const product = await this.productRepo.findOne({
       where: { id: productId },

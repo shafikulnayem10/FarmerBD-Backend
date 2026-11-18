@@ -23,10 +23,6 @@ export class AdminTransportersService {
     private readonly notificationsService: NotificationsService,
   ) {}
 
-  // FR-A05: the user and the profile are created in one transaction, so a
-  // duplicate vehicle or licence number doesn't leave a user without a profile.
-  // The new transporter starts as PENDING until the Admin verifies the
-  // licence and vehicle.
   async createTransporter(dto: CreateTransporterDto) {
     return await this.dataSource.transaction(async (manager) => {
       const existingUser = await manager.findOne(Users, {
@@ -98,8 +94,7 @@ export class AdminTransportersService {
         availability: query.availability,
       });
     }
-    // A transporter matches a district if it is the base district or one
-    // of the service districts.
+    
     if (query.district) {
       builder.andWhere(
         new Brackets((qb) => {

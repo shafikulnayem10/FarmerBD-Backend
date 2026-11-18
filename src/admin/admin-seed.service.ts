@@ -7,8 +7,6 @@ import { Role } from '../common/enums/role.enum.js';
 import { Users } from '../users/entities/users.entity.js';
 import { UsersService } from '../users/users.service.js';
 
-// FR-A01: public registration can't create an Admin, so the first Admin is
-// created here from the ADMIN_* values in .env when no Admin exists yet.
 @Injectable()
 export class AdminSeedService implements OnApplicationBootstrap {
   private readonly logger = new Logger('AdminSeed');

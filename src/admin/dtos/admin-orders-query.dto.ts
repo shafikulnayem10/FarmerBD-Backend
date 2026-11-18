@@ -24,7 +24,6 @@ export class AdminOrdersQueryDto extends PaginationQueryDto {
   @IsUUID()
   buyerId?: string;
 
-  // Delivery district of the order (ship_district).
   @IsOptional()
   @IsIn(BD_DISTRICTS, { message: 'district must be a valid Bangladesh district' })
   district?: string;

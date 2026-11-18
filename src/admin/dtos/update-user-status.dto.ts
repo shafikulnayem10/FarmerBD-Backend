@@ -7,7 +7,6 @@ export class UpdateUserStatusDto {
   @IsEnum(UserStatus)
   status!: UserStatus;
 
-  // A reason is required when suspending, optional when reactivating.
   @ValidateIf(
     (dto: UpdateUserStatusDto) =>
       dto.status === UserStatus.SUSPENDED || dto.reason !== undefined,

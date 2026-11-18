@@ -21,7 +21,6 @@ import { AdminOrdersQueryDto } from './dtos/admin-orders-query.dto.js';
 import { AdminReasonDto } from './dtos/admin-reason.dto.js';
 import { AssignTransporterDto } from './dtos/assign-transporter.dto.js';
 
-// The Admin can cancel only before the goods are picked up.
 const CANCELLABLE_STATUSES = [
   OrderStatus.PENDING,
   OrderStatus.ACCEPTED,
@@ -43,7 +42,6 @@ export class AdminOrdersService {
     private readonly notificationsService: NotificationsService,
   ) {}
 
-  // FR-A09
   async getOrders(query: AdminOrdersQueryDto) {
     const fromDate = query.from ? new Date(query.from) : undefined;
     let toDate: Date | undefined = undefined;
@@ -123,8 +121,7 @@ export class AdminOrdersService {
     return this.toAdminOrderResponse(order, delivery);
   }
 
-  // FR-A10. The order row is locked first, so this can't race with a
-  // transporter accepting the same job (FR-T06 locks the same row).
+
   async assignTransporter(adminId: string, orderId: string, dto: AssignTransporterDto) {
     return await this.dataSource.transaction(async (manager) => {
       const order = await manager.findOne(Order, {
@@ -161,7 +158,6 @@ export class AdminOrdersService {
       let previousTransporterId: string | null = null;
 
       if (!delivery) {
-        // First assignment: work out the fare and save it as a snapshot.
         const farmer = await manager.findOne(FarmerProfile, {
           where: { id: order.farmerId },
         });
@@ -186,9 +182,7 @@ export class AdminOrdersService {
           assignedAt: new Date(),
         });
       } else {
-        // Reassignment: allowed while the goods are still with the farmer,
-        // or after a failed attempt. The fare snapshot is kept, because the
-        // route is the same.
+      
         if (
           delivery.status !== DeliveryStatus.ASSIGNED &&
           delivery.status !== DeliveryStatus.FAILED
@@ -227,8 +221,7 @@ export class AdminOrdersService {
           : `Assigned to transporter ${transporter.id}`,
       );
 
-      // FR-T11: the new transporter gets the job, the old one is told it
-      // was taken away.
+      
       await this.notificationsService.notify(manager, {
         userId: transporter.userId,
         type: 'JOB_ASSIGNED',
@@ -245,7 +238,6 @@ export class AdminOrdersService {
     });
   }
 
-  // FR-A11
   async cancelOrder(adminId: string, orderId: string, dto: AdminReasonDto) {
     return await this.dataSource.transaction(async (manager) => {
       const order = await manager.findOne(Order, {
@@ -261,8 +253,7 @@ export class AdminOrdersService {
         );
       }
 
-      // If a transporter already has the goods, the order can't be cancelled.
-      // If one is only assigned, the delivery is closed as FAILED.
+  
       const delivery = await manager.findOne(Delivery, {
         where: { orderId: order.id },
         lock: { mode: 'pessimistic_write' },

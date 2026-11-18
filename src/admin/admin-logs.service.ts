@@ -5,8 +5,7 @@ import { AdminActionLog } from './entities/admin-action-log.entity.js';
 
 @Injectable()
 export class AdminLogsService {
-  // Saved with the same manager as the change, so the log and the change
-  // are committed or rolled back together.
+  
   async log(
     manager: EntityManager,
     adminId: string,

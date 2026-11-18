@@ -4,7 +4,6 @@ import { ProductStatus } from '../../common/enums/product-status.enum.js';
 import { trim } from '../../common/transformers/trim.transformer.js';
 
 export class ModerateProductDto {
-  // DRAFT = unpublish, ARCHIVED = archive.
   @IsIn([ProductStatus.DRAFT, ProductStatus.ARCHIVED], {
     message: 'status must be one of DRAFT, ARCHIVED',
   })

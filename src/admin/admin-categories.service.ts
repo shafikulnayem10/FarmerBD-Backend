@@ -17,7 +17,6 @@ export class AdminCategoriesService {
     private readonly adminLogsService: AdminLogsService,
   ) {}
 
-  // FR-A06: all categories, including inactive ones
   async getAll() {
     return await this.categoryRepo.find({ order: { name: 'ASC' } });
   }
@@ -76,8 +75,7 @@ export class AdminCategoriesService {
     });
   }
 
-  // A category used by any product, even a soft-deleted one, can't be
-  // deleted (the FK is RESTRICT). It can only be deactivated.
+ 
   async delete(adminId: string, categoryId: string) {
     return await this.dataSource.transaction(async (manager) => {
       const category = await this.findCategory(manager, categoryId);
@@ -137,7 +135,6 @@ export class AdminCategoriesService {
     }
   }
 
-  // "Rice and Grains" -> "rice-and-grains", same style as the seeded slugs
   private toSlug(name: string) {
     const slug = name
       .toLowerCase()

@@ -23,7 +23,6 @@ export class AdminPricingService {
     private readonly adminLogsService: AdminLogsService,
   ) {}
 
-  // FR-A07
   async getFuelPrices(query: FuelPricesQueryDto) {
     return await this.pricingService.getFuelPriceHistory(
       query.fuelType,
@@ -32,8 +31,6 @@ export class AdminPricingService {
     );
   }
 
-  // A new row is added each time; old prices are kept as history and
-  // deliveries keep the price they were created with (snapshot).
   async addFuelPrice(adminId: string, dto: CreateFuelPriceDto) {
     return await this.dataSource.transaction(async (manager) => {
       const price = await this.pricingService.addFuelPrice(manager, adminId, dto);
@@ -49,7 +46,6 @@ export class AdminPricingService {
     });
   }
 
-  // FR-A08
   async getDeliverySettings() {
     return await this.pricingService.getDeliverySettings();
   }

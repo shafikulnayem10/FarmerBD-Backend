@@ -19,7 +19,6 @@ export class AdminFarmersService {
     private readonly notificationsService: NotificationsService,
   ) {}
 
-  // FR-A04: list farmers, usually filtered by verificationStatus=PENDING
   async getFarmers(query: AdminFarmersQueryDto) {
     const where: FindOptionsWhere<FarmerProfile> = {};
     if (query.verificationStatus) {
@@ -48,7 +47,6 @@ export class AdminFarmersService {
     };
   }
 
-  // FR-A04: verify or reject, then notify the farmer (backs FR-F04)
   async setVerification(adminId: string, farmerId: string, dto: VerificationDto) {
     return await this.dataSource.transaction(async (manager) => {
       const farmer = await manager.findOne(FarmerProfile, {
