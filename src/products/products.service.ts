@@ -57,7 +57,7 @@ export class ProductsService {
   async getMyProducts(userId: string, query: MyProductsQueryDto) {
     const profile = await this.farmersService.getOrCreateProfile(userId);
 
-    const where: FindOptionsWhere<Product> = { farmerId: profile.id };
+    const where: any = { farmerId: profile.id };
     if (query.status) {
       where.status = query.status;
     }
@@ -95,7 +95,7 @@ export class ProductsService {
       await this.checkCategory(dto.categoryId);
     }
 
-    const changes: Record<string, unknown> = {};
+    const changes: any = {};
     for (const field of EDITABLE_FIELDS) {
       if (dto[field] !== undefined) {
         changes[field] = dto[field];

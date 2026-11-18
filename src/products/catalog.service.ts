@@ -1,6 +1,6 @@
 import {BadRequestException,Injectable,NotFoundException,} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import {Between,FindOptionsOrder,FindOptionsWhere,ILike,In,LessThanOrEqual,MoreThanOrEqual,Repository,} from 'typeorm';
+import {Between,ILike,In,LessThanOrEqual,MoreThanOrEqual,Repository,} from 'typeorm';
 import { ProductStatus } from '../common/enums/product-status.enum.js';
 import { PublicProductsQueryDto } from './dtos/public-products-query.dto.js';
 import { Product } from './entities/product.entity.js';
@@ -20,8 +20,8 @@ export class CatalogService {
       throw new BadRequestException('minPrice cannot be greater than maxPrice');
     }
 
-    const where: FindOptionsWhere<Product> = {
-      status: query.inStock ? ProductStatus.ACTIVE : In(VISIBLE_STATUSES),
+    const where: any = {
+      status: query.inStock == true ? ProductStatus.ACTIVE : In(VISIBLE_STATUSES),
     };
     if (query.search) {
       where.name = ILike(`%${query.search}%`);
@@ -40,7 +40,7 @@ export class CatalogService {
       where.pricePerUnit = LessThanOrEqual(maxPrice);
     }
 
-    let order: FindOptionsOrder<Product> = { createdAt: 'DESC' };
+    let order: any = { createdAt: 'DESC' };
     if (query.sort === 'price_asc') {
       order = { pricePerUnit: 'ASC' };
     } else if (query.sort === 'price_desc') {
@@ -49,7 +49,10 @@ export class CatalogService {
 
     const [products, total] = await this.productRepo.findAndCount({
       where,
-      relations: { farmer: true, category: true, },
+      relations: { 
+        farmer: true,
+        category: true,
+       },
       order,
       skip: (query.page - 1) * query.limit,
       take: query.limit,
@@ -68,8 +71,13 @@ export class CatalogService {
 
   async findOne(id: string) {
     const product = await this.productRepo.findOne({
-      where: { id, status: In(VISIBLE_STATUSES) },
-      relations: { farmer: true, category: true,},
+      where: { id,
+       status: In(VISIBLE_STATUSES)
+       },
+      relations: {
+         farmer: true, 
+        category: true,
+      },
     });
     if (!product) {
       throw new NotFoundException('Product not found');
@@ -80,7 +88,7 @@ export class CatalogService {
   }
 
   private async getPriceComparison(product: Product) {
-    const where: FindOptionsWhere<Product> = {
+    const where: any = {
       categoryId: product.categoryId,
       unit: product.unit,
       status: ProductStatus.ACTIVE,
