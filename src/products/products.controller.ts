@@ -27,19 +27,19 @@ export class ProductsController {
   @Patch(':id')
   async updateProduct(
     @CurrentUser('id') userId: string,
-    @Param('id', ParseUUIDPipe) id: string,
+    @Param('id', ParseUUIDPipe) productID: string,
     @Body() dto: UpdateProductDto,
   ) {
-    return await this.productsService.updateProduct(userId, id, dto);
+    return await this.productsService.updateProduct(userId, productID, dto);
   }
 
   @Patch(':id/stock')
   async updateStock(
     @CurrentUser('id') userId: string,
-    @Param('id', ParseUUIDPipe) id: string,
+    @Param('id', ParseUUIDPipe) productID: string,
     @Body() dto: UpdateStockDto,
   ) {
-    return await this.productsService.updateStock(userId, id, dto);
+    return await this.productsService.updateStock(userId, productID, dto);
   }
 
   @Patch(':productID/status')
@@ -54,8 +54,8 @@ export class ProductsController {
   @Delete(':id')
   async deleteProduct(
     @CurrentUser('id') userId: string,
-    @Param('id', ParseUUIDPipe) id: string,
+    @Param('id', ParseUUIDPipe) productID: string,
   ) {
-    return await this.productsService.deleteProduct(userId, id);
+    return await this.productsService.deleteProduct(userId, productID);
   }
 }
