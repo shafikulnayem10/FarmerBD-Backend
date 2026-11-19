@@ -13,6 +13,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         username: configService.getOrThrow<string>('DATABASE_USERNAME'),
         password: configService.getOrThrow<string>('DATABASE_PASSWORD'),
         database: configService.getOrThrow<string>('DATABASE_NAME'),
+        ssl: configService.get<boolean>('DATABASE_SSL', false),
         autoLoadEntities: true,
         synchronize: configService.get<string>('NODE_ENV') === 'development',
         logging: ['error' as const],

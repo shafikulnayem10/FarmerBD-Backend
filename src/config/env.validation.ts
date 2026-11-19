@@ -12,12 +12,12 @@ export const envValidationSchema = Joi.object({
   DATABASE_USERNAME: Joi.string().required(),
   DATABASE_PASSWORD: Joi.string().required(),
   DATABASE_NAME: Joi.string().required(),
+  DATABASE_SSL: Joi.boolean().default(false),
 
   JWT_SECRET: Joi.string().min(32).required(),
   JWT_EXPIRES_IN: Joi.number().integer().positive().default(3600),
 
-  // Used once to create the first Admin (FR-A01). Optional, so an existing
-  // database that already has an Admin doesn't need them.
+  
   ADMIN_NAME: Joi.string().max(100).allow('').optional(),
   ADMIN_EMAIL: Joi.string().email().allow('').optional(),
   ADMIN_PHONE: Joi.string(),
