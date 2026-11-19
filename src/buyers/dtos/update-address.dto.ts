@@ -1,9 +1,6 @@
 import { Transform } from 'class-transformer';
 import {IsBoolean,IsIn, IsNotEmpty,IsOptional,IsString,Matches,MaxLength,} from 'class-validator';
-import {
-  BD_DISTRICTS,
-  BD_DIVISIONS,
-} from '../../common/constants/bd-locations.js';
+import {BD_DISTRICTS,BD_DIVISIONS,} from '../../common/constants/bd-locations.js';
 
 import { trim } from '../../common/transformers/trim.transformer.js';
 
