@@ -28,7 +28,7 @@ export class UpdateProductDto {
   @IsOptional()
   @IsNumber({ maxDecimalPlaces: 2 })
   @Min(0.01)
-  @Max(1000000)
+  @Max(100000)
   pricePerUnit?: number;
 
   @IsOptional()
