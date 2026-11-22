@@ -1,0 +1,3093 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "FarmerBD — All Roles Full Flow (Farmer + Buyer + Admin + Transporter)",
+  "collectionId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+  "dateExported": "2026-11-21T03:27:25.818Z",
+  "version": "1.2",
+  "folders": [
+    {
+      "_id": "9dde58ff-9306-4a4f-87a8-6b263cc54f2e",
+      "name": "Phase 1 — Farmer Account ও Profile",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 10000
+    },
+    {
+      "_id": "36c2b5a6-c3dd-4e42-b7fa-837f252c6abf",
+      "name": "Phase 2 — Farmer Product Management",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 20000
+    },
+    {
+      "_id": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "Admin — Setup ও Moderation",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 30000
+    },
+    {
+      "_id": "8d70aa52-c42d-495b-a468-8762b3bc79b4",
+      "name": "Transporter",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 40000
+    },
+    {
+      "_id": "29113aee-b894-4b89-b189-007b2dc3a466",
+      "name": "Phase 3 — Buyer Account ও Address",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 50000
+    },
+    {
+      "_id": "ac588f2c-6fd0-4bb9-8c08-640610335400",
+      "name": "Phase 4 — Buyer Shopping (Cart ও Checkout)",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 60000
+    },
+    {
+      "_id": "0089448a-b18f-471b-bb23-6490a6045c57",
+      "name": "Phase 5 — Farmer Order Process করে",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 70000
+    },
+    {
+      "_id": "965bdbd1-5a70-4dab-937d-5a970ba41402",
+      "name": "Admin — Order ও Delivery",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 80000
+    },
+    {
+      "_id": "8cf53862-5ca2-4305-9169-8cf1e2247e5e",
+      "name": "Phase 5 — Farmer Order Process করে (contd.)",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 90000
+    },
+    {
+      "_id": "15fbe469-5fe0-4514-917b-69b1e77641a8",
+      "name": "Phase 6 — Buyer Delivery Confirm ও Final Check",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 100000
+    },
+    {
+      "_id": "62f441b7-ea5e-4ce5-9623-eec0029bbc60",
+      "name": "Admin — User Status",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 110000
+    },
+    {
+      "_id": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "Phase 7 — Optional Extra (Cancel, Reject, Cart, Cleanup)",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 120000
+    },
+    {
+      "_id": "4130eef4-b0f9-4081-914a-68e1d96301ee",
+      "name": "Admin — Order Cancel",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 130000
+    },
+    {
+      "_id": "336c189e-9bab-4f72-b760-464e1f7f6851",
+      "name": "Admin — Product Moderation",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 140000
+    },
+    {
+      "_id": "cdc971ab-db36-4d03-9298-bf2892c1d395",
+      "name": "Phase 7 — Optional Extra (Cancel, Reject, Cart, Cleanup) (contd.)",
+      "containerId": "",
+      "created": "2026-11-21T03:27:25.818Z",
+      "sortNum": 150000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "7b648015-df11-457b-a03f-0b6d8a624049",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "9dde58ff-9306-4a4f-87a8-6b263cc54f2e",
+      "name": "[01] Register Farmer",
+      "url": "{{baseUrl}}/auth/register",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"fullName\": \"Rahim Uddin\",\n  \"email\": \"{{farmerEmail}}\",\n  \"phone\": \"{{farmerPhone}}\",\n  \"password\": \"Farmer@123\",\n  \"role\": \"FARMER\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.accessToken",
+          "action": "setto",
+          "value": "{{farmerToken}}"
+        }
+      ]
+    },
+    {
+      "_id": "3f87f0e8-0b9d-48fc-baee-09c3583ad8cc",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "9dde58ff-9306-4a4f-87a8-6b263cc54f2e",
+      "name": "[02] Login Farmer",
+      "url": "{{baseUrl}}/auth/login",
+      "method": "POST",
+      "sortNum": 20000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"{{farmerEmail}}\",\n  \"password\": \"Farmer@123\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.accessToken",
+          "action": "setto",
+          "value": "{{farmerToken}}"
+        }
+      ]
+    },
+    {
+      "_id": "b2c99be3-59a3-4e8c-813f-a186e4a1e99e",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "9dde58ff-9306-4a4f-87a8-6b263cc54f2e",
+      "name": "[03] Get My Auth Profile (Farmer)",
+      "url": "{{baseUrl}}/auth/me",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "243789b9-46f0-4649-a55e-c32f729d56be",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "9dde58ff-9306-4a4f-87a8-6b263cc54f2e",
+      "name": "[04] Get Farmer Profile",
+      "url": "{{baseUrl}}/farmers/me",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setto",
+          "value": "{{farmerProfileId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "733713c8-6754-4034-9ace-49dacb710feb",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "9dde58ff-9306-4a4f-87a8-6b263cc54f2e",
+      "name": "[05] Update Farmer Profile",
+      "url": "{{baseUrl}}/farmers/me",
+      "method": "PATCH",
+      "sortNum": 50000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"farmName\": \"Rahim Organic Farm\",\n  \"division\": \"Rajshahi\",\n  \"district\": \"Bogura\",\n  \"upazila\": \"Sherpur\",\n  \"addressLine\": \"Char Para Village, Sherpur\",\n  \"farmSizeAcres\": 5.5,\n  \"primaryCrops\": [\n    \"Rice\",\n    \"Potato\",\n    \"Guava\"\n  ],\n  \"bio\": \"Family-run farm growing fresh fruits and vegetables.\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "d15672ff-4e3a-4aa2-a6a2-76dbbd766fbe",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "9dde58ff-9306-4a4f-87a8-6b263cc54f2e",
+      "name": "[06] Get Product Categories",
+      "url": "{{baseUrl}}/categories",
+      "method": "GET",
+      "sortNum": 60000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json[0].id",
+          "action": "setto",
+          "value": "{{categoryId}}"
+        }
+      ]
+    },
+    {
+      "_id": "726b524b-1a7f-41f7-a812-58d51d9fff3b",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "36c2b5a6-c3dd-4e42-b7fa-837f252c6abf",
+      "name": "[07] Create Product",
+      "url": "{{baseUrl}}/products",
+      "method": "POST",
+      "sortNum": 70000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Fresh Guava\",\n  \"description\": \"Farm fresh guava, picked this week\",\n  \"categoryId\": \"{{categoryId}}\",\n  \"unit\": \"KG\",\n  \"pricePerUnit\": 80,\n  \"availableQuantity\": 200,\n  \"minOrderQuantity\": 5,\n  \"harvestDate\": \"2026-11-18\",\n  \"availableFrom\": \"2026-11-20\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setto",
+          "value": "{{productId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "754f3a09-30df-488c-8732-a70f137d3a3d",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "36c2b5a6-c3dd-4e42-b7fa-837f252c6abf",
+      "name": "[08] List My Products",
+      "url": "{{baseUrl}}/farmers/me/products?page=1&limit=10",
+      "method": "GET",
+      "sortNum": 80000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "limit",
+          "value": "10",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "f1dd615a-0247-402d-a568-8b9b02e85d51",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "36c2b5a6-c3dd-4e42-b7fa-837f252c6abf",
+      "name": "[09] Get My Product by ID",
+      "url": "{{baseUrl}}/farmers/me/products/{{productId}}",
+      "method": "GET",
+      "sortNum": 90000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "999df652-9c8b-449d-93e2-4ca19dad8aed",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "36c2b5a6-c3dd-4e42-b7fa-837f252c6abf",
+      "name": "[10] Update Product",
+      "url": "{{baseUrl}}/products/{{productId}}",
+      "method": "PATCH",
+      "sortNum": 100000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"description\": \"Fresh guava, hand picked and carefully packed\",\n  \"pricePerUnit\": 85\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "cb8f1bd8-3110-48d3-9c53-5752838136fa",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "36c2b5a6-c3dd-4e42-b7fa-837f252c6abf",
+      "name": "[11] Update Product Stock",
+      "url": "{{baseUrl}}/products/{{productId}}/stock",
+      "method": "PATCH",
+      "sortNum": 110000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"availableQuantity\": 250\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "b4bd2081-1fe1-4776-9fec-1c6a6df667c1",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "36c2b5a6-c3dd-4e42-b7fa-837f252c6abf",
+      "name": "[12] Publish Product (status ACTIVE)",
+      "url": "{{baseUrl}}/products/{{productId}}/status",
+      "method": "PATCH",
+      "sortNum": 120000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"ACTIVE\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "99cbd783-c32e-45cc-b01f-6557f7cafb7e",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "36c2b5a6-c3dd-4e42-b7fa-837f252c6abf",
+      "name": "[13] Verify Product in Public Catalog",
+      "url": "{{baseUrl}}/products?search=guava&sort=price_asc",
+      "method": "GET",
+      "sortNum": 130000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "search",
+          "value": "guava",
+          "isPath": false
+        },
+        {
+          "name": "sort",
+          "value": "price_asc",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "a1c5eefb-b7d9-447a-b074-e0877e7f0473",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A01] Login Admin",
+      "url": "{{baseUrl}}/auth/login",
+      "method": "POST",
+      "sortNum": 140000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"{{adminEmail}}\",\n  \"password\": \"{{adminPassword}}\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.accessToken",
+          "action": "setto",
+          "value": "{{adminToken}}"
+        }
+      ]
+    },
+    {
+      "_id": "ca2964c1-c6e5-460b-a9d9-0aab2eed020f",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A02] Admin Dashboard Summary",
+      "url": "{{baseUrl}}/admin/dashboard",
+      "method": "GET",
+      "sortNum": 150000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "d3ef75ae-8342-4618-9092-a555f3cc637b",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A03] List Farmers (Pending Verification)",
+      "url": "{{baseUrl}}/admin/farmers?verificationStatus=PENDING&page=1&limit=10",
+      "method": "GET",
+      "sortNum": 160000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "verificationStatus",
+          "value": "PENDING",
+          "isPath": false
+        },
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "limit",
+          "value": "10",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "58d3fd84-bc91-4be4-8829-442dc61ee009",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A04] Verify Farmer",
+      "url": "{{baseUrl}}/admin/farmers/{{farmerProfileId}}/verification",
+      "method": "PATCH",
+      "sortNum": 170000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"VERIFIED\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "c793eac1-b352-4782-81f7-4b7f8c4cf4f8",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A05] List Users (Filter by Role)",
+      "url": "{{baseUrl}}/admin/users?role=FARMER&page=1&limit=10",
+      "method": "GET",
+      "sortNum": 180000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "role",
+          "value": "FARMER",
+          "isPath": false
+        },
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "limit",
+          "value": "10",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "7d5d43a6-ee2a-4960-bc78-7c93b326f026",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A06] List All Categories (Admin)",
+      "url": "{{baseUrl}}/admin/categories",
+      "method": "GET",
+      "sortNum": 190000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "2d93c42c-bfa7-4977-a226-8f37ad6eda6d",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A07] Create Category",
+      "url": "{{baseUrl}}/admin/categories",
+      "method": "POST",
+      "sortNum": 200000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Dairy and Eggs\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setto",
+          "value": "{{newCategoryId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "cacdf7f0-4225-47a6-bfb4-f11fd5a1b965",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A08] Update Category",
+      "url": "{{baseUrl}}/admin/categories/{{newCategoryId}}",
+      "method": "PATCH",
+      "sortNum": 210000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Dairy Products\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "39b6a474-388c-4cc1-9c6e-7942ec08612c",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A09] Delete Category",
+      "url": "{{baseUrl}}/admin/categories/{{newCategoryId}}",
+      "method": "DELETE",
+      "sortNum": 220000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "dc031321-24e1-4384-9e13-12903fa0aa5d",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A10] List Fuel Prices",
+      "url": "{{baseUrl}}/admin/fuel-prices?page=1&limit=10",
+      "method": "GET",
+      "sortNum": 230000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "limit",
+          "value": "10",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "9d525700-3c29-4c3e-a5e6-7c7c639517b3",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A11] Add Fuel Price",
+      "url": "{{baseUrl}}/admin/fuel-prices",
+      "method": "POST",
+      "sortNum": 240000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"fuelType\": \"DIESEL\",\n  \"pricePerLiter\": 109,\n  \"effectiveFrom\": \"2026-11-21\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "c74ef6d9-24f8-498a-8dd4-95fd99f6b3ca",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A12] Get Current Fuel Price (Public)",
+      "url": "{{baseUrl}}/fuel-prices/current",
+      "method": "GET",
+      "sortNum": 250000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "68ba9dcc-0dc1-4819-96a5-b42c63976697",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A13] Get Delivery Settings",
+      "url": "{{baseUrl}}/admin/delivery-settings",
+      "method": "GET",
+      "sortNum": 260000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "ffbe8cfb-0384-453d-b6e9-1f820e524e36",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A14] Update Delivery Settings",
+      "url": "{{baseUrl}}/admin/delivery-settings",
+      "method": "PATCH",
+      "sortNum": 270000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"baseFare\": 50,\n  \"minFare\": 80\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "6a409d1a-eee5-46c0-a107-5f05e2aaea5e",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A15] Create Transporter",
+      "url": "{{baseUrl}}/admin/transporters",
+      "method": "POST",
+      "sortNum": 280000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"fullName\": \"Sabbir Ahmed\",\n  \"email\": \"{{transporterEmail}}\",\n  \"phone\": \"{{transporterPhone}}\",\n  \"password\": \"Transporter@123\",\n  \"vehicleType\": \"PICKUP\",\n  \"vehicleNumber\": \"DHAKA-METRO-11-2233\",\n  \"capacityKg\": 1500,\n  \"licenseNumber\": \"DL-2026-778899\",\n  \"baseDistrict\": \"Bogura\",\n  \"serviceDistricts\": [\n    \"Bogura\",\n    \"Dhaka\"\n  ]\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setto",
+          "value": "{{transporterId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "4b75a5c4-7ac4-47b7-86ae-ed7de4ba7842",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A16] List Transporters (Pending)",
+      "url": "{{baseUrl}}/admin/transporters?verificationStatus=PENDING&page=1&limit=10",
+      "method": "GET",
+      "sortNum": 290000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "verificationStatus",
+          "value": "PENDING",
+          "isPath": false
+        },
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "limit",
+          "value": "10",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "60123af8-2d8c-4c1b-9022-c0a157767115",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0b42695f-0f37-4d7d-a5cc-8eb8d8ccac31",
+      "name": "[A17] Verify Transporter",
+      "url": "{{baseUrl}}/admin/transporters/{{transporterId}}/verification",
+      "method": "PATCH",
+      "sortNum": 300000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"VERIFIED\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "faf859f9-d4e1-46b9-b9b9-f98b48b21647",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "8d70aa52-c42d-495b-a468-8762b3bc79b4",
+      "name": "[T01] Login Transporter",
+      "url": "{{baseUrl}}/auth/login",
+      "method": "POST",
+      "sortNum": 310000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"{{transporterEmail}}\",\n  \"password\": \"Transporter@123\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.accessToken",
+          "action": "setto",
+          "value": "{{transporterToken}}"
+        }
+      ]
+    },
+    {
+      "_id": "0a3b73f4-84e6-4aef-8d09-a7998ae65524",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "8d70aa52-c42d-495b-a468-8762b3bc79b4",
+      "name": "[T02] Get My Auth Profile (Transporter)",
+      "url": "{{baseUrl}}/auth/me",
+      "method": "GET",
+      "sortNum": 320000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{transporterToken}}"
+      }
+    },
+    {
+      "_id": "8e2ae8b4-bff3-449f-b944-43f69150aadc",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "29113aee-b894-4b89-b189-007b2dc3a466",
+      "name": "[14] Register Buyer",
+      "url": "{{baseUrl}}/auth/register",
+      "method": "POST",
+      "sortNum": 330000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"fullName\": \"Karim Hossain\",\n  \"email\": \"{{buyerEmail}}\",\n  \"phone\": \"{{buyerPhone}}\",\n  \"password\": \"Buyer@123\",\n  \"role\": \"BUYER\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.accessToken",
+          "action": "setto",
+          "value": "{{buyerToken}}"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.user.id",
+          "action": "setto",
+          "value": "{{buyerUserId}}"
+        }
+      ]
+    },
+    {
+      "_id": "88171a07-3590-41bd-b85e-3d7ba9c99913",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "29113aee-b894-4b89-b189-007b2dc3a466",
+      "name": "[15] Login Buyer",
+      "url": "{{baseUrl}}/auth/login",
+      "method": "POST",
+      "sortNum": 340000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"{{buyerEmail}}\",\n  \"password\": \"Buyer@123\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.accessToken",
+          "action": "setto",
+          "value": "{{buyerToken}}"
+        }
+      ]
+    },
+    {
+      "_id": "a7351140-65a7-406d-a2ec-456f3e31d7aa",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "29113aee-b894-4b89-b189-007b2dc3a466",
+      "name": "[16] Get My Auth Profile (Buyer)",
+      "url": "{{baseUrl}}/auth/me",
+      "method": "GET",
+      "sortNum": 350000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "a7704c14-2b32-4793-b600-1dd41a6fa2e0",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "29113aee-b894-4b89-b189-007b2dc3a466",
+      "name": "[17] Get Buyer Profile",
+      "url": "{{baseUrl}}/buyers/me",
+      "method": "GET",
+      "sortNum": 360000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "736f3866-0240-49db-b9a3-122c0e440826",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "29113aee-b894-4b89-b189-007b2dc3a466",
+      "name": "[18] Update Buyer Profile",
+      "url": "{{baseUrl}}/buyers/me",
+      "method": "PATCH",
+      "sortNum": 370000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"buyerType\": \"RESTAURANT\",\n  \"businessName\": \"Karim Kitchen\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "48fe6639-0210-4b42-ba94-52eeba505a23",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "29113aee-b894-4b89-b189-007b2dc3a466",
+      "name": "[19] Create Delivery Address",
+      "url": "{{baseUrl}}/buyers/me/addresses",
+      "method": "POST",
+      "sortNum": 380000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"label\": \"Home\",\n  \"recipientName\": \"Karim Hossain\",\n  \"phone\": \"01811112222\",\n  \"division\": \"Dhaka\",\n  \"district\": \"Dhaka\",\n  \"upazila\": \"Mirpur\",\n  \"addressLine\": \"House 12, Road 5, Mirpur 10\",\n  \"isDefault\": true\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setto",
+          "value": "{{addressId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "a89ddb4c-242e-430a-b6a9-246ed7bd3da1",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "29113aee-b894-4b89-b189-007b2dc3a466",
+      "name": "[20] List My Addresses",
+      "url": "{{baseUrl}}/buyers/me/addresses",
+      "method": "GET",
+      "sortNum": 390000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "1cb21216-4c05-466c-a387-99b4b42ddb66",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "29113aee-b894-4b89-b189-007b2dc3a466",
+      "name": "[21] Update Delivery Address",
+      "url": "{{baseUrl}}/buyers/me/addresses/{{addressId}}",
+      "method": "PATCH",
+      "sortNum": 400000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"label\": \"Home (Updated)\",\n  \"addressLine\": \"House 14, Road 5, Mirpur 10\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "5a444640-dfe6-44ce-87d6-e461dacd070d",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "ac588f2c-6fd0-4bb9-8c08-640610335400",
+      "name": "[22] Browse Products (Public)",
+      "url": "{{baseUrl}}/products?search=guava&sort=price_asc&inStock=true",
+      "method": "GET",
+      "sortNum": 410000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "search",
+          "value": "guava",
+          "isPath": false
+        },
+        {
+          "name": "sort",
+          "value": "price_asc",
+          "isPath": false
+        },
+        {
+          "name": "inStock",
+          "value": "true",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "1c684a14-8a45-442c-af2b-373b45275d01",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "ac588f2c-6fd0-4bb9-8c08-640610335400",
+      "name": "[23] Get Product Details (Public)",
+      "url": "{{baseUrl}}/products/{{productId}}",
+      "method": "GET",
+      "sortNum": 420000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "7a5eb92c-f918-43d7-a00c-19040c3e5561",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "ac588f2c-6fd0-4bb9-8c08-640610335400",
+      "name": "[24] View Cart (Empty)",
+      "url": "{{baseUrl}}/cart",
+      "method": "GET",
+      "sortNum": 430000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "22ab994d-28af-426e-9e1c-209743ac1642",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "ac588f2c-6fd0-4bb9-8c08-640610335400",
+      "name": "[25] Add Item to Cart",
+      "url": "{{baseUrl}}/cart/items",
+      "method": "POST",
+      "sortNum": 440000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 10\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.groups[0].items[0].id",
+          "action": "setto",
+          "value": "{{cartItemId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "3e5694f9-cb9b-467a-9099-7fb7359ce772",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "ac588f2c-6fd0-4bb9-8c08-640610335400",
+      "name": "[26] Update Cart Item Quantity",
+      "url": "{{baseUrl}}/cart/items/{{cartItemId}}",
+      "method": "PATCH",
+      "sortNum": 450000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"quantity\": 20\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "bdca6977-9338-4a2d-a2f4-78d6390d7acd",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "ac588f2c-6fd0-4bb9-8c08-640610335400",
+      "name": "[27] View Cart (With Totals)",
+      "url": "{{baseUrl}}/cart",
+      "method": "GET",
+      "sortNum": 460000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "b0f62a58-1ea8-4a00-984b-fb4641eb7659",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "ac588f2c-6fd0-4bb9-8c08-640610335400",
+      "name": "[28] Checkout (Place Order)",
+      "url": "{{baseUrl}}/orders/checkout",
+      "method": "POST",
+      "sortNum": 470000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"addressId\": \"{{addressId}}\",\n  \"note\": \"Please deliver in the morning\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json[0].id",
+          "action": "setto",
+          "value": "{{orderId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "7cbe09c9-40b0-4e1c-bd36-a614cfbf7d45",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "ac588f2c-6fd0-4bb9-8c08-640610335400",
+      "name": "[29] My Orders (Buyer)",
+      "url": "{{baseUrl}}/buyers/me/orders?page=1&limit=10",
+      "method": "GET",
+      "sortNum": 480000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "limit",
+          "value": "10",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "b816a6d4-847a-4a60-bb4c-d4685e4003ed",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "ac588f2c-6fd0-4bb9-8c08-640610335400",
+      "name": "[30] Get Order Details (Buyer)",
+      "url": "{{baseUrl}}/orders/{{orderId}}",
+      "method": "GET",
+      "sortNum": 490000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "fc64ed30-8029-4e69-bb9a-573e210d3a29",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0089448a-b18f-471b-bb23-6490a6045c57",
+      "name": "[31] Farmer: List My Orders",
+      "url": "{{baseUrl}}/farmers/me/orders?status=PENDING&page=1&limit=10",
+      "method": "GET",
+      "sortNum": 500000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "status",
+          "value": "PENDING",
+          "isPath": false
+        },
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "limit",
+          "value": "10",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "ef6be96c-c7e1-4b86-af2e-cc417d2bf9c8",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0089448a-b18f-471b-bb23-6490a6045c57",
+      "name": "[32] Farmer: Get Order Details",
+      "url": "{{baseUrl}}/orders/{{orderId}}",
+      "method": "GET",
+      "sortNum": 510000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "45b782ae-0fe4-4349-84b1-7fd87ba760a3",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0089448a-b18f-471b-bb23-6490a6045c57",
+      "name": "[33] Farmer: Accept Order",
+      "url": "{{baseUrl}}/orders/{{orderId}}/accept",
+      "method": "PATCH",
+      "sortNum": 520000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "a35df838-e347-41a4-8199-b16f2daa427a",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0089448a-b18f-471b-bb23-6490a6045c57",
+      "name": "[34] Farmer: Mark Order PREPARING",
+      "url": "{{baseUrl}}/orders/{{orderId}}/status",
+      "method": "PATCH",
+      "sortNum": 530000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"PREPARING\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "63b4b141-dba3-4cd0-99e4-001c953dc6d7",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "0089448a-b18f-471b-bb23-6490a6045c57",
+      "name": "[35] Farmer: Mark Order READY_FOR_PICKUP",
+      "url": "{{baseUrl}}/orders/{{orderId}}/status",
+      "method": "PATCH",
+      "sortNum": 540000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"READY_FOR_PICKUP\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "4ec5ed49-2a4a-4acf-8a93-412e778bab8a",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "965bdbd1-5a70-4dab-937d-5a970ba41402",
+      "name": "[A18] List All Orders (READY_FOR_PICKUP)",
+      "url": "{{baseUrl}}/admin/orders?status=READY_FOR_PICKUP&page=1&limit=10",
+      "method": "GET",
+      "sortNum": 550000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "status",
+          "value": "READY_FOR_PICKUP",
+          "isPath": false
+        },
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "limit",
+          "value": "10",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "5bf0140b-2771-4adf-9b2f-02b70fcae39c",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "965bdbd1-5a70-4dab-937d-5a970ba41402",
+      "name": "[A19] Get Order Details (Admin)",
+      "url": "{{baseUrl}}/admin/orders/{{orderId}}",
+      "method": "GET",
+      "sortNum": 560000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "18659d8d-2642-4e64-9f8f-4a57a67b4bd8",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "965bdbd1-5a70-4dab-937d-5a970ba41402",
+      "name": "[A20] Assign Transporter to Order",
+      "url": "{{baseUrl}}/admin/orders/{{orderId}}/assign-transporter",
+      "method": "PATCH",
+      "sortNum": 570000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"transporterId\": \"{{transporterId}}\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "47f6702b-16ac-4a46-8c3b-190816452aad",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "8cf53862-5ca2-4305-9169-8cf1e2247e5e",
+      "name": "[36] Farmer: Mark Order DELIVERED",
+      "url": "{{baseUrl}}/orders/{{orderId}}/status",
+      "method": "PATCH",
+      "sortNum": 580000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"DELIVERED\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "630d9ee0-e0ca-4b53-b26f-a71cd046e299",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "15fbe469-5fe0-4514-917b-69b1e77641a8",
+      "name": "[37] Confirm Delivery (Complete Order)",
+      "url": "{{baseUrl}}/orders/{{orderId}}/confirm-delivery",
+      "method": "PATCH",
+      "sortNum": 590000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "fc7245c5-53b7-4008-94b7-33915cf81573",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "15fbe469-5fe0-4514-917b-69b1e77641a8",
+      "name": "[38] My Orders — Filter COMPLETED",
+      "url": "{{baseUrl}}/buyers/me/orders?status=COMPLETED&page=1&limit=10",
+      "method": "GET",
+      "sortNum": 600000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "status",
+          "value": "COMPLETED",
+          "isPath": false
+        },
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "limit",
+          "value": "10",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "a8fce185-c163-4917-b57f-608a827b7cd5",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "15fbe469-5fe0-4514-917b-69b1e77641a8",
+      "name": "[39] Farmer: Check Stock After Order",
+      "url": "{{baseUrl}}/farmers/me/products/{{productId}}",
+      "method": "GET",
+      "sortNum": 610000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "171b92b2-6b40-447f-b690-b0bc451da912",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "62f441b7-ea5e-4ce5-9623-eec0029bbc60",
+      "name": "[A21] Suspend Buyer Account",
+      "url": "{{baseUrl}}/admin/users/{{buyerUserId}}/status",
+      "method": "PATCH",
+      "sortNum": 620000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"SUSPENDED\",\n  \"reason\": \"Policy review for demo\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "9b324318-81b2-4f03-bfb3-03473a33dc88",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "62f441b7-ea5e-4ce5-9623-eec0029bbc60",
+      "name": "[54] Buyer: Profile While Suspended (403 expected)",
+      "url": "{{baseUrl}}/buyers/me",
+      "method": "GET",
+      "sortNum": 630000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "403"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "5d0d9a76-f4b5-4e48-9e5b-e0415841cdb3",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "62f441b7-ea5e-4ce5-9623-eec0029bbc60",
+      "name": "[A22] Re-activate Buyer Account",
+      "url": "{{baseUrl}}/admin/users/{{buyerUserId}}/status",
+      "method": "PATCH",
+      "sortNum": 640000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"ACTIVE\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "219220c7-a0b6-4574-8220-b7949e82ca02",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "[40] Extra: Add Item to Cart (for Cancel test)",
+      "url": "{{baseUrl}}/cart/items",
+      "method": "POST",
+      "sortNum": 650000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 5\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.groups[0].items[0].id",
+          "action": "setto",
+          "value": "{{cartItemId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "ee20a1ee-1db7-4b4d-8fa1-15ee43ba05eb",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "[41] Extra: Checkout (for Cancel test)",
+      "url": "{{baseUrl}}/orders/checkout",
+      "method": "POST",
+      "sortNum": 660000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"addressId\": \"{{addressId}}\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json[0].id",
+          "action": "setto",
+          "value": "{{extraOrderId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "7b87dd44-85db-49bd-acce-d25a3151d8b8",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "[42] Buyer: Cancel Order",
+      "url": "{{baseUrl}}/orders/{{extraOrderId}}/cancel",
+      "method": "PATCH",
+      "sortNum": 670000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"reason\": \"Ordered by mistake\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "01839f92-4450-4c00-b285-94972d5493f4",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "[43] Extra: Add Item to Cart (for Reject test)",
+      "url": "{{baseUrl}}/cart/items",
+      "method": "POST",
+      "sortNum": 680000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 5\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.groups[0].items[0].id",
+          "action": "setto",
+          "value": "{{cartItemId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "1a0e40fd-56bc-4bd0-b659-5f325737a3cc",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "[44] Extra: Checkout (for Reject test)",
+      "url": "{{baseUrl}}/orders/checkout",
+      "method": "POST",
+      "sortNum": 690000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"addressId\": \"{{addressId}}\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json[0].id",
+          "action": "setto",
+          "value": "{{extraOrderId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "0589e48a-609f-41ab-85e0-307e3e3d4de5",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "[45] Farmer: Reject Order",
+      "url": "{{baseUrl}}/orders/{{extraOrderId}}/reject",
+      "method": "PATCH",
+      "sortNum": 700000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"reason\": \"Stock finished for today\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "313304d0-416d-41a0-b965-0676fa5bfcd9",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "[46] Extra: Add Item to Cart (for Remove test)",
+      "url": "{{baseUrl}}/cart/items",
+      "method": "POST",
+      "sortNum": 710000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 5\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.groups[0].items[0].id",
+          "action": "setto",
+          "value": "{{cartItemId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "468f8e3f-e926-4f72-b8eb-07540afc843d",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "[47] Remove Item from Cart",
+      "url": "{{baseUrl}}/cart/items/{{cartItemId}}",
+      "method": "DELETE",
+      "sortNum": 720000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "afe39624-d360-4047-9e69-0153978ba148",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "[48] Extra: Add Item to Cart (for Clear test)",
+      "url": "{{baseUrl}}/cart/items",
+      "method": "POST",
+      "sortNum": 730000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 5\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.groups[0].items[0].id",
+          "action": "setto",
+          "value": "{{cartItemId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "e18a61e6-9ca1-4bd9-8905-21c8edcbfdba",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "[49] Clear Entire Cart",
+      "url": "{{baseUrl}}/cart",
+      "method": "DELETE",
+      "sortNum": 740000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "a3bf1834-4182-448f-9b21-4515744e88ee",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "[50] Create Second Address",
+      "url": "{{baseUrl}}/buyers/me/addresses",
+      "method": "POST",
+      "sortNum": 750000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"label\": \"Office\",\n  \"recipientName\": \"Karim Hossain\",\n  \"phone\": \"01811113333\",\n  \"division\": \"Dhaka\",\n  \"district\": \"Gazipur\",\n  \"upazila\": \"Tongi\",\n  \"addressLine\": \"Office Road 1, Tongi\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setto",
+          "value": "{{secondAddressId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "92a3373b-0129-46dd-9a27-6c0e6bb2f518",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "[51] Delete Second Address",
+      "url": "{{baseUrl}}/buyers/me/addresses/{{secondAddressId}}",
+      "method": "DELETE",
+      "sortNum": 760000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "364b2c82-6bd1-48c2-bfb1-f4b9e17186d9",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "4130eef4-b0f9-4081-914a-68e1d96301ee",
+      "name": "[55] Extra: Add Item to Cart (for Admin cancel test)",
+      "url": "{{baseUrl}}/cart/items",
+      "method": "POST",
+      "sortNum": 770000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 5\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.groups[0].items[0].id",
+          "action": "setto",
+          "value": "{{cartItemId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "8ed2fc21-9bf5-48a2-b274-174584efbe85",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "4130eef4-b0f9-4081-914a-68e1d96301ee",
+      "name": "[56] Extra: Checkout (for Admin cancel test)",
+      "url": "{{baseUrl}}/orders/checkout",
+      "method": "POST",
+      "sortNum": 780000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"addressId\": \"{{addressId}}\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json[0].id",
+          "action": "setto",
+          "value": "{{extraOrderId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{buyerToken}}"
+      }
+    },
+    {
+      "_id": "5fe47867-9ea4-4813-ac1a-68f0ba115eb6",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "4130eef4-b0f9-4081-914a-68e1d96301ee",
+      "name": "[A23] Cancel Order (Admin)",
+      "url": "{{baseUrl}}/admin/orders/{{extraOrderId}}/cancel",
+      "method": "PATCH",
+      "sortNum": 790000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"reason\": \"Cancelled by admin during review\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "7ba4c69b-c777-41cd-9243-96c5714cac76",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "336c189e-9bab-4f72-b760-464e1f7f6851",
+      "name": "[A24] Moderate Product (Archive)",
+      "url": "{{baseUrl}}/admin/products/{{productId}}/status",
+      "method": "PATCH",
+      "sortNum": 800000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"ARCHIVED\",\n  \"reason\": \"Quality check completed\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "02cf905c-171f-4686-bdf6-eacf588fd620",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "336c189e-9bab-4f72-b760-464e1f7f6851",
+      "name": "[A25] View Product Stock Logs",
+      "url": "{{baseUrl}}/admin/products/{{productId}}/stock-logs?page=1&limit=10",
+      "method": "GET",
+      "sortNum": 810000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "limit",
+          "value": "10",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      }
+    },
+    {
+      "_id": "8b3f4746-f81e-4126-8ece-5d271ae7e439",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "cdc971ab-db36-4d03-9298-bf2892c1d395",
+      "name": "[52] Archive Product",
+      "url": "{{baseUrl}}/products/{{productId}}/status",
+      "method": "PATCH",
+      "sortNum": 820000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"ARCHIVED\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    },
+    {
+      "_id": "e0828fd3-1b32-44ad-99f8-a3b0edb84f49",
+      "colId": "cc0b8fbd-631b-4807-9955-e23fdf6e2409",
+      "containerId": "780ed42a-d191-4dd2-890d-ce9e4745fddb",
+      "name": "[53] Delete Product",
+      "url": "{{baseUrl}}/products/{{productId}}",
+      "method": "DELETE",
+      "sortNum": 830000,
+      "created": "2026-11-21T03:27:25.818Z",
+      "modified": "2026-11-21T03:27:25.818Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{farmerToken}}"
+      }
+    }
+  ]
+}
