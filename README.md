@@ -9,7 +9,7 @@ Built for the course **CSC4161 - Advance Programming in Web Technology** and dem
 | Live backend (API base URL) | https://farmerbd-backend.onrender.com/api |
 | GitHub repository | https://github.com/shafikulnayem10/FarmerBD-Backend |
 
-> **Note on cold starts:** The backend runs on Render's free tier and spins down after 15 minutes of inactivity. The first request after a pause can take around a minute. Open `/api/categories` once before testing or a demo to wake the service up.
+> **Note on cold starts:** The backend runs on Render's free tier and spins down after 15 minutes of inactivity. The first request after a pause can take around a minute. Open `/api` once before testing or a demo to wake the service up.
 
 ---
 
@@ -135,7 +135,7 @@ FarmerBD-Backend/
 ├── .env.example
 ├── package.json
 └── src/
-    ├── main.ts
+    ├── main.ts           app bootstrap (prefix, helmet, CORS, pipes, `/` redirect)
     ├── app.module.ts
     │
     ├── admin/            admin controllers and services
@@ -147,11 +147,15 @@ FarmerBD-Backend/
     ├── common/           enums, constants, DTOs, middleware, interceptor, transformers
     ├── config/           environment validation (Joi)
     ├── database/         TypeORM connection
+    ├── deliveries/       delivery records (managed by Admin)
     ├── farmer-orders/    farmer order handling
     ├── farmers/          farmer profile
+    ├── notifications/    notification entity and service
     ├── orders/           order and order item entities
     ├── pricing/          fuel price and delivery settings
     ├── products/         products, catalog, stock rules
+    ├── root/             root welcome endpoint (GET /api)
+    ├── transporters/     transporter profiles (managed by Admin)
     └── users/            user entity and service
 ```
 
@@ -359,6 +363,8 @@ For validation errors, `message` is an array describing each problem.
 
 | Method | Endpoint | Note |
 |---|---|---|
+| GET | `/` | Redirects to `/api` |
+| GET | `/api` | Welcome message and API status (see below) |
 | GET | `/categories` | List active categories |
 | GET | `/products` | Query: `search`, `categoryId`, `minPrice`, `maxPrice`, `district`, `inStock`, `sort` (`newest`, `price_asc`, `price_desc`), `page`, `limit` |
 | GET | `/products/:id` | Product detail with farmer card and price comparison |
@@ -429,6 +435,21 @@ For validation errors, `message` is an array describing each problem.
 | PATCH | `/admin/transporters/:id/verification` |
 | GET, POST | `/admin/fuel-prices` |
 | GET, PATCH | `/admin/delivery-settings` |
+
+### Root Endpoint
+
+`GET /api` is public and returns a welcome message. It only shows that the API process is running. It does not check the database. `GET /` redirects to `/api`.
+
+```json
+{
+  "success": true,
+  "message": "Welcome to FarmerBD API!",
+  "description": "A platform connecting farmers directly with buyers across Bangladesh.",
+  "version": "1.0.0",
+  "status": "running",
+  "timestamp": "2026-11-27T00:00:00.000Z"
+}
+```
 
 ### Example 1: Register
 
@@ -636,7 +657,7 @@ A cart can contain products from many farmers. Checkout splits it into one order
 
 **Problem:** Render's free web service sleeps after 15 minutes, so the first request takes about a minute.
 
-**Solution:** It cannot be removed on the free tier. It is documented at the top of this README, and `/api/categories` can be opened once to wake the service.
+**Solution:** It cannot be removed on the free tier. It is documented at the top of this README, and `/api` can be opened once to wake the service.
 
 ---
 
