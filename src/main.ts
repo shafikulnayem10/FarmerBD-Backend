@@ -27,6 +27,11 @@ async function bootstrap() {
   );
   app.useGlobalInterceptors(new TimingInterceptor());
 
+
+  app.getHttpAdapter().get('/', (_req: unknown, res: { redirect: (url: string) => void }) => {
+      res.redirect('/api');
+    });
+
   const port = configService.get<number>('PORT', 3000);
   await app.listen(port);
   Logger.log(`API running on http://localhost:${port}/api`, 'Bootstrap');
